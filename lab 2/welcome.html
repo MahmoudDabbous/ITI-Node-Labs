@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Welcome <span id="clientName"></span></h1>
+    <div id="clientInfo"></div>
+    <button id="getClientsBtn">Get Client Info</button>
+
+    <script>
+      // Load client's info from localStorage
+      document.getElementById("clientName").innerText =
+        localStorage.getItem("name");
+
+      // Make AJAX request to get client's info from clients.json
+      document.getElementById("getClientsBtn").addEventListener("click", () => {
+        fetch("/clients.json")
+          .then((response) => response.json())
+          .then((clients) => displayClientsInfo(clients))
+          .catch((error) => console.log(error));
+      });
+
+      // Function to display client's info
+      function displayClientsInfo(clients) {
+        const clientInfoDiv = document.getElementById("clientInfo");
+        clientInfoDiv.innerHTML = "<h2>Clients Info</h2>";
+        clients.forEach((client) => {
+          const clientDiv = document.createElement("div");
+          clientDiv.innerHTML = /* html*/ `
+                    <p>seatNum: ${client.seatNum}</p>
+                    <p>flightNum: ${client.flightNum}</p>
+                    <p>departureAirport: ${client.departureAirport}</p>
+                    <p>arrivalAirport: ${client.arrivalAirport}</p>
+                    <p>travelDate: ${client.travelDate}</p>
+                    <hr>
+                `;
+          clientInfoDiv.appendChild(clientDiv);
+        });
+      }
+    </script>
+  </body>
+</html>
