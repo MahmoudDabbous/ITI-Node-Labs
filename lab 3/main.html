@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+  </head>
+  <body>
+    <h1>Flight Ticket Reservation</h1>
+    <form action="/welcome.html" method="post">
+      <label for="seatNum">Seat Number:</label>
+      <input type="text" id="seatNum" name="seatNum" required /><br /><br />
+      <label for="flightNum">Flight Number:</label>
+      <input type="text" id="flightNum" name="flightNum" required /><br /><br />
+      <label for="departureAirport">Departure Airport:</label>
+      <input
+        type="text"
+        id="departureAirport"
+        name="departureAirport"
+        required
+      /><br /><br />
+      <label for="arrivalAirport">Arrival Airport:</label>
+      <input
+        type="text"
+        id="arrivalAirport"
+        name="arrivalAirport"
+        required
+      /><br /><br />
+      <label for="travelDate">Travel Date:</label>
+      <input
+        type="date"
+        id="travelDate"
+        name="travelDate"
+        required
+      /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
